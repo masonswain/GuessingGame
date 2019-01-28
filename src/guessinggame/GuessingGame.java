@@ -10,7 +10,7 @@ public class GuessingGame {
         boolean exit = false;        
         Random r = new Random();
         int low = 0;
-        int high = 20;
+        int high = 100;
         int result = r.nextInt(high-low) + low;
         System.out.printf("I'm thinking of a number between 0-100.  What is the number? ");
         int guess = input.nextInt();        
@@ -20,8 +20,13 @@ public class GuessingGame {
                 exit = true;
             }                
             else {
-                System.out.printf("Nope.  Try again: ");
-                guess = input.nextInt();
+                if (guess < result) {
+                    System.out.printf("Nope.  Too low.  Try again: ");
+                    guess = input.nextInt();
+                } else {
+                    System.out.printf("Nope.  Too high.  Try again: ");
+                    guess = input.nextInt();
+                }                
             }                            
         }        
     }   
